@@ -2,60 +2,58 @@
 #include <string>
 #include <iostream>
 #include "event.h"
-class Converter{
-    private:
+class Converter{//clase que convierte una operacion infija a postfija
+    private: //atributos privados 
         Pila<char> *plistaNum;
         Pila<char> *pSimbolo;
         char *resultado;
         string aConvertir;
         int largoString;
     public:
-        Converter(string operacion){
+        Converter(string operacion){ //constructor de la clase converter
             this->pSimbolo = new Pila<char>;
             this->plistaNum = new Pila<char>;
-            this->aConvertir = operacion;
+            //this->aConvertir = operacion;
         }
-        void convert(string operacion){
+        void convert(string operacion){//funcion que va a "armar" el resultado
             resultado = new char[operacion.length()];
             largoString = operacion.length();
             for(int i = 0 ;largoString ; i++){
-                checkChar(operacion[i] , i);
-                insert(); alo
-
+                checkChar(operacion[i] , i); /*
+                checkea si el valor es operador o numero y lo inserta en la pila*/
+                if(checkTop() == true){
+                    
+                }
             }
         }
-        bool checkTop(){ //para que esto funcione si o si debo modificar la lista.
-            char valor = pSimbolo->getFirst() 
-            if( == '+'||'-' ||'*'||'/'||'&'||'('||')'){
+        bool checkTop(){ //funcion que checkea el codigo 
 
-            }
         }
         void checkChar(char letra , int valor){
             switch(letra){
                 case '+':
-                   pSimbolo->Push(&letra);
+                   pSimbolo->Push(letra);
                    break;
                 case '-':
-                   pSimbolo->Push(&letra);
+                   pSimbolo->Push(letra);
                    break;
                 case '*':
-                   pSimbolo->Push(&letra);
+                   pSimbolo->Push(letra);
                    break;
                 case '/':
-                   pSimbolo->Push(&letra);
+                   pSimbolo->Push(letra);
                    break;
                 case '&':
-                   pSimbolo->Push(&letra);
+                   pSimbolo->Push(letra);
                    break;
                 case '(':
-                   pSimbolo->Push(&letra);
+                   pSimbolo->Push(letra);
                    break;
                 case ')':
-                   pSimbolo->Push(&letra);
+                   pSimbolo->Push(letra);
                    break;
                 default :
                     resultado[valor] =letra; 
             }     
-
         }
 };
