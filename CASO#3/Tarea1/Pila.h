@@ -21,7 +21,7 @@ class Pila {
             empty = true;
         }
 
-        void Push(T *pData) { //añade al inicio de la pila
+        void Push(T pData) { //añade al inicio de la pila
             Node<T> *newNode = new Node<T>(pData);
             if (quantity>0) {
                 newNode->setNext(getFirst());
@@ -46,8 +46,8 @@ class Pila {
         bool isEmpty() {
             return !quantity;
         }
-        T* Top() { //retorno lo contenido en el nodo, no el nodo como tal.
-            T* result = NULL;
+        T Top() { //retorno lo contenido en el nodo, no el nodo como tal.
+            T result = NULL;
             if (first != NULL){
             Node<T>* search = this->first;
             result = search->getData();
@@ -65,7 +65,7 @@ class Pila {
                 this->first = current;
             }
             else{
-                cout<<"la lista esta vacia";
+                printf("la lista esta vacia");
             }
         }
 };

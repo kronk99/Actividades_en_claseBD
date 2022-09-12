@@ -7,9 +7,14 @@
 using namespace std;
 
 template <class T>
+/*se modifico data, ya no es un pointer debido a mi codigo de la clase
+converter, por lo que ahora recibe data normal, no pointers a cosas 
+tener esto en cuenta (como nota de que modifique el nodo para que reciba
+chars )
+*/
 class Node {
     private:
-        T *data;
+        T data;
         Node *next;
     
     public:
@@ -18,12 +23,12 @@ class Node {
             next = NULL;
         }
 
-        Node(T *pData) {
+        Node(T pData) {
             this->data = pData;
             next = NULL;
         }
 
-        T* getData() {
+        T getData() {
             return data;
         }
 
