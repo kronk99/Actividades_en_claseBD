@@ -15,6 +15,7 @@ class Converter{//clase que convierte una operacion infija a postfija
            
         }
         void convert(string operacion){
+            //hacer un if de si pila no esta vacia.
             largoString = operacion.length();
             for(int i = 0 ;i<largoString; i++){ 
                 checkChar(operacion[i] , i); 

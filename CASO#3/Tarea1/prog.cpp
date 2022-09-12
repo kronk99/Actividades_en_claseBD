@@ -13,6 +13,6 @@ int main() {
     */
     string a = "(1*(2-3))/(4+5)";
     Converter *convertir = new Converter();
+    string b = "(2+3)";
     convertir->convert(a);
-    Converter *convertir2 = new Converter();
 }

@@ -14,7 +14,7 @@ chars )
 */
 class Node {
     private:
-        T data;
+        T *data;
         Node *next;
     
     public:
@@ -23,12 +23,12 @@ class Node {
             next = NULL;
         }
 
-        Node(T pData) {
+        Node(T *pData) {
             this->data = pData;
             next = NULL;
         }
 
-        T getData() {
+        T* getData() {
             return data;
         }
 

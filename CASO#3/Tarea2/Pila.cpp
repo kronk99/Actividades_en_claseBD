@@ -1,5 +1,4 @@
-#include "Node.h"
-#include "event.h"
+#include <Node.cpp>
 using namespace std;
 #ifndef PILA 
 
@@ -21,7 +20,7 @@ class Pila {
             empty = true;
         }
 
-        void Push(T pData) { //añade al inicio de la pila
+        void Push(T *pData) { //añade al inicio de la pila
             Node<T> *newNode = new Node<T>(pData);
             if (quantity>0) {
                 newNode->setNext(getFirst());
