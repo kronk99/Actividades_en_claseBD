@@ -1,4 +1,4 @@
-#include 
+
 #include <string>
 #include <iostream>
 using namespace std;
@@ -16,4 +16,5 @@ int main() {
     para el cuarto movimiento muevo el tercer elemento a la siguiente lista , inserto
     el cuarto en la lista vacia, e inserto el 3 de vuelta a la lista anterior.
     y asi sucesivamente , asi se resuelve este problema
+    */
 }
