@@ -25,7 +25,7 @@ class Flight {
         tm *currentTime; //current time lo pase aca en los atributos privados
 
     public: 
-        Flight(int pHour, int pMinutes) {
+        Flight(int pHour, int pMinutes ,string nombreVuelo , int numVuelos , int cantPasaj) {
             timer = ((pHour)*60 + pMinutes)*60;
             cout<<"el tiempo es aa" << timer << endl;
             flightTime = time(NULL); //time solo acepta segundos
@@ -34,7 +34,9 @@ class Flight {
             cout<<timer<<endl;
             flightTime = (flightTime - timer) +((pHour)*60 + pMinutes)*60;
             currentTime = localtime(&flightTime);
-
+            aerolinea = nombreVuelo;
+            numVuelo = numVuelos;
+            cantPasajeros = cantPasaj;
         }
 
         char* flightTimeString() {
