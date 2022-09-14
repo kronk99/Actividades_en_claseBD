@@ -29,7 +29,6 @@ class Pila {
                 newNode->setNext(NULL);
                 this->first = newNode;
             }
-
             empty = false;
             quantity++;
         }
@@ -45,8 +44,8 @@ class Pila {
         bool isEmpty() {
             return !quantity;
         }
-        T Top() { //retorno lo contenido en el nodo, no el nodo como tal.
-            T result = NULL;
+        T* Top() { //retorno lo contenido en el nodo, no el nodo como tal.
+            T* result = NULL;
             if (first != NULL){
             Node<T>* search = this->first;
             result = search->getData();
@@ -62,6 +61,7 @@ class Pila {
                 current = first->getNext();
                 first->setNext(NULL);
                 this->first = current;
+                quantity-=1;
             }
             else{
                 printf("la lista esta vacia");

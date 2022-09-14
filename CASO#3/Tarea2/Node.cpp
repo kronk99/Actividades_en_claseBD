@@ -35,7 +35,6 @@ class Node {
         Node* getNext() {
             return next;
         }
-
         void setNext(Node *pValue) {
             this->next = pValue;
         }
