@@ -47,8 +47,8 @@ class Flight {
             cout<<"la hora es:"<<currentTime->tm_sec  <<endl;
         }
 
-        double getIntTimeValue() {
-            double result = currentTime->tm_hour + (currentTime->tm_min)/100;
+        int getIntTimeValue() {
+            int result = (currentTime->tm_hour)*60*60 + (currentTime->tm_min)*60;
             return result;
 
         }
