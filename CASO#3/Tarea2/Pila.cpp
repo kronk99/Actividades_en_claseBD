@@ -26,11 +26,11 @@ class Pila {
             if (quantity>0) {
                 newNode->setNext(getFirst());
                 first = newNode;
-                //cout<<"se ha anadido un nodo cualquiera"<<endl;
+                cout<<"se ha anadido un nodo cualquiera"<<endl;
             } else {
                 newNode->setNext(NULL);
                 first = newNode;
-                //cout<<"se ha anadido un nodo como cabeza"<<endl;
+                cout<<"se ha anadido un nodo como cabeza"<<endl;
             }
             empty = false;
             quantity++;

@@ -7,7 +7,7 @@ class Cola{
         Pila<T> *front;
         Pila<T> *back;
         int counter;
-        int conMovimientos;
+        int conMovimientos=0;
     public:
         Cola(){
             this->front = new Pila<T>();
@@ -42,7 +42,7 @@ class Cola{
                     conMovimientos+=1;
                 }
                 back->Push(data);
-                for(int i = 0; i<=conMovimientos;i++){
+                for(int i = 0; i<conMovimientos;i++){
                     back->Push(front->Top());
                     front->Pop();
                 }

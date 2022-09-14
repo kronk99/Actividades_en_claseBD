@@ -21,7 +21,4 @@ int main() {
    //cola->dequeue();
    actual = cola->primero(); 
    cout<<actual->getNombre();
-
-
-
 }
