@@ -1,4 +1,5 @@
-#include <Node.cpp>
+#include <iostream>
+#include "Node.cpp"
 using namespace std;
 #ifndef PILA 
 
@@ -25,9 +26,11 @@ class Pila {
             if (quantity>0) {
                 newNode->setNext(getFirst());
                 first = newNode;
+                //cout<<"se ha anadido un nodo cualquiera"<<endl;
             } else {
                 newNode->setNext(NULL);
-                this->first = newNode;
+                first = newNode;
+                //cout<<"se ha anadido un nodo como cabeza"<<endl;
             }
             empty = false;
             quantity++;
@@ -51,7 +54,7 @@ class Pila {
             result = search->getData();
             }
             else{
-                cout<<"la lista esta vacia"<< endl;
+                cout<<"la lista esta vaciaaa"<< endl;
             }
             return result;
         }
@@ -61,6 +64,10 @@ class Pila {
                 current = first->getNext();
                 first->setNext(NULL);
                 this->first = current;
+                quantity-=1;
+            }
+            else if(quantity == 1){
+                first = NULL;
                 quantity-=1;
             }
             else{

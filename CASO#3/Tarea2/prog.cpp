@@ -1,18 +1,27 @@
 
 #include <string>
 #include <iostream>
-#include <Carro.cpp>
-#include <Cola.cpp>
+#include "Carro.cpp"
+#include "Cola.cpp"
+#include "Pila.cpp"
 using namespace std;
 int main() {
-    //vea para este programa la cosa es hacer lo siguiente usar 2 pilas
-    /* el primer movimiento inserto en un lado de la lista,
-    el segundo insert inserto en la otra lista
-    el tercer movmiento , primero muevo el primer elemento al otro lado
-    e inserto en la lista que deje vacia
-    para el cuarto movimiento muevo el tercer elemento a la siguiente lista , inserto
-    el cuarto en la lista vacia, e inserto el 3 de vuelta a la lista anterior.
-    y asi sucesivamente , asi se resuelve este problema
-    */
+   Carro *carro1 = new Carro("mazda");
+   Carro *carro2 =new Carro("toyota");
+   Carro *carro3 = new Carro("ferrari");
+   Cola<Carro> *cola = new Cola<Carro>();
+   cola->enqueue(carro1);
+   cola->enqueue(carro2);
+   cola->enqueue(carro3); 
+   cola->enqueue(carro2);//aca se genera el bucle
+   //cola->enqueue(carro2);
+   Carro *actual = cola->primero();
+   cout<<actual->getNombre();
+   //cola->dequeue();
+   //cola->dequeue();
+   actual = cola->primero(); 
+   cout<<actual->getNombre();
+
+
 
 }

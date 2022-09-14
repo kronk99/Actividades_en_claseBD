@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string>
+#ifndef CARRO 
+#define CARRO 1
 using namespace std;
 class Carro{
     private:
@@ -15,3 +17,4 @@ class Carro{
             return nombreCarro;
         }
 };
+#endif

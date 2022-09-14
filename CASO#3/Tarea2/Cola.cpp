@@ -1,39 +1,49 @@
 #include <iostream>
-#include <Node.cpp>
+#include "Node.cpp"
+#include "Pila.cpp"
 template <class T>
-class cola{
+class Cola{
     private:
         Pila<T> *front;
         Pila<T> *back;
         int counter;
         int conMovimientos;
     public:
-        cola(){
-            this->front = new Pila();
-            this->back = new Pila();
+        Cola(){
+            this->front = new Pila<T>();
+            this->back = new Pila<T>();
             this->counter = 0;
         }
         void enqueue(T *data){
             switch (counter){ 
             case 0:
-                back->push(data);
+                back->Push(data);
                 counter+=1;
+                cout<<"el counter es:"<<counter<<endl;
                 break;
             case 1:
-                front->push(data);
-                front->push(back->Top());
-                back->Pop();
+                front->Push(data);
+                front->Push(back->Top());
+                back->Pop(); //revisar el pop
                 counter+=1;
-            
+                cout<<"el counter es:"<<counter<<endl;
+                break;
+            case 2:
+                back->Push(data);
+                counter+=1;
+                cout<<back->getSize()<<endl;
+                cout<<"el counter es:"<<counter<<endl;
+                break;
             default:
                 for(int i = 0; i<=back->getSize();i++){
-                    front->push(back->Top());
+                    cout<<"entre al primer ciclo"<<endl;
+                    front->Push(back->Top());
                     back->Pop();
                     conMovimientos+=1;
                 }
-                back->push(data);
+                back->Push(data);
                 for(int i = 0; i<=conMovimientos;i++){
-                    back->push(front->Top());
+                    back->Push(front->Top());
                     front->Pop();
                 }
                 conMovimientos = 0;
@@ -49,8 +59,15 @@ class cola{
                 return true;
             }
         }
-        T* front(){
-            return front->Top();
+        T* primero(){
+            T* result;
+            if(counter < 2){
+                result = back->Top();
+            }
+            else{
+               result = front->Top(); 
+            }
+            return result;
         }
         void dequeue(){
             if(front->getSize() ==1 && back->getSize()>0){
@@ -66,7 +83,7 @@ class cola{
                 counter = 0;
             }
             else{
-                cout << "la lista esta vacia"
+                cout << "la lista esta vacia";
             }
         }
 
