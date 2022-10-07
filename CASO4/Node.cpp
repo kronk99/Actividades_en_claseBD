@@ -38,7 +38,7 @@ class Node {
         T* getData() {
             return data;
         }
-        Node* getCardinals(){
+        Node* getCardinals(){ //con esto podre añadir directamente?
             return this->cardinals;
         }
         Node* getPrev() { // esta linea se agrega para quiz #4 #5

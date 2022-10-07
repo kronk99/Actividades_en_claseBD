@@ -10,7 +10,7 @@ class Miner{
         Miner(int pVelocidad){
             velocidad = pVelocidad;
         }
-        void cantminer(int pMinerales){
+        void cantminada(int pMinerales){
             cantidadMin = pMinerales;
         }
         int getMinerales(){

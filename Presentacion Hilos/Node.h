@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-
 #ifndef NODE 
 
 #define NODE 1
@@ -28,11 +27,11 @@ class Node {
             nomMinero = minero;
             this->data = pData;
             next = NULL;
-            this->nombreCueva = name;
         }
 
         T* getData() {
-            printf("el minero trajo : s%" ; nomMinero);
+            //printf("el minero trajo : s%" , nomMinero);
+            cout<<"el minero es:" <<nomMinero<<endl;
             return data;
         }
         Node* getNext() { // esta linea se agrega para quiz #4 #5

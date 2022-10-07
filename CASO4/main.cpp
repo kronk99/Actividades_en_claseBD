@@ -7,6 +7,7 @@
 #include "Miner.h"
 #include "Cola.h"
 using namespace std;
+bool ready = false; //flag global
 void moveTopo(Miner *topos){
     Miner *topo = topos;
 
@@ -14,15 +15,12 @@ void moveTopo(Miner *topos){
 void moveCarguero(Miner * cargueros){
     Miner *carguero = cargueros;
 }
-void moveMinerExplorer(Miner *exploradors , Cola<int> *colas){
-    Cola<int> *cola = colas;
-    Miner *explorer  =exploradors;
-    int i = 0;
+int moveMinerExplorer(){
     int randomMineral = 0;
     int randomNumber = 0;
     int caminadaIda;
     int caminadaRegreso;
-    while(i<10){
+    while(!ready){ //esto debe cambiar a un flag
         randomNumber = rand() % 80; //Genera la distancia que debe de caminar
         caminadaIda=randomNumber;
         caminadaRegreso=randomNumber;
@@ -37,13 +35,20 @@ void moveMinerExplorer(Miner *exploradors , Cola<int> *colas){
             cout<<"el explorer  esta caminando de regreso";
             this_thread::sleep_for (std::chrono::seconds(1));
         }
-        cola->enqueue(&randomMineral , "explorer");
-        i++;
+        ready = false;
+        //digamos que aca hay un return
+    }
+    return randomMineral;
+}
+void game(){
+    Cola<int> *bodega = new Cola<int>();
+    int i = 0;
+    while(i<3){
+        int data = moveMinerExplorer();
+        bodega->enqueue(&data , "puta");
     }
 }
 int main(){
-    Cola<int> *bodega = new Cola<int>();
-    Miner *miner = new Miner(20);
-    thread t1(moveMinerExplorer);
-
+    thread t1(game);
+    t1.join();
 }

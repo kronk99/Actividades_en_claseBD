@@ -9,7 +9,7 @@ template <typename T>
 class Cola  {
     private:
         Node<T> *first;
-       // Node<T> *last; //perhaps unnecesary for this game.
+        Node<T> *last; //perhaps unnecesary for this game.
         Node<T> *searchPosition;
         int size;
     public:
@@ -30,11 +30,11 @@ class Cola  {
                 this->first = newNode;
                 this->last = newNode;
             }
-            size++
+            size++;
         }
         Node<T>* dequeue() {
             return this->first;
-            Pop()
+            Pop();
         }
         int getSize() {
             return size;
@@ -44,14 +44,14 @@ class Cola  {
         }
         void Pop(){
             if(size >1){
-                Node *current = first;
+                Node<T> *current = first;
                 first = first->getNext();
                 current->setNext(NULL);
-                size--
+                size--;
             }
             else if(size=1){
-                first = null;
-                size--
+                first = NULL;
+                size--;
             }
             else{
                 cout<<"no hay elementos a eliminar";
