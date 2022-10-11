@@ -13,18 +13,13 @@ class Node {
     private:
         T *door;
         Node *prev //debe de ser un array de nodos
-        //AVL *camPrincip; //puntero al arbol avl con la cámara principal.
-        //haria falta un metodo que diga addAVL para añadir el arbol aca y
-        //el metodo getAVL
-        Node *cardinals[4]
-    
+        Node *cardinals[4] //CREO QUE ESTO DEBE LLEVAR UN DATATYPE T.
     public:
         Node() {
             door = NULL;
             prev = NULL; // esta linea se agrega para quiz #4 #5
         }
-
-        Node(T *pData) {
+        Node(T *data) {
             this->door = pData;
             prev = NULL;
             cardinals[0] = NULL;
@@ -32,8 +27,8 @@ class Node {
             cardinals[2] = NULL;
             cardinals[3] = NULL;
         }
-        void addData(T *datas){
-            this->door = datas
+        void addDoor(T *datas){
+            this->door = datas;
         }
         T* getData() {
             return data;
@@ -41,16 +36,17 @@ class Node {
         Node* getCardinals(){ //con esto podre añadir directamente?
             return this->cardinals;
         }
-        Node* getPrev() { // esta linea se agrega para quiz #4 #5
+        Node* getPrev() { 
             return prev;
         }
-        void setPrev(Node *pValue) {// esta linea se agrega para quiz #4 #5
+        void setPrev(Node *pValue) {
             this->prev = pValue;
         }
         void setCantPuertas(int number){ //inserta la cantidad de puertas
         //de una determinada habitacion(nodo).
             this->cantPuertas = number;
         }
+
 };
 
 #endif

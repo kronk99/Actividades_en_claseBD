@@ -1,1 +1,0 @@
-cola->enqueue(&a , "cloe");

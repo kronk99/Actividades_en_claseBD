@@ -1,3 +1,42 @@
+#include <iostream>
+#include "Door.cpp"
+#include "List.cpp"
+#include "Cola.h"
+#include "Node.cpp"
+class doorManager{
+    private:
+        Node<Door> *mainEntrance ; //puntero al nodo de la entrada principal
+        Cola<Node<Door>> *colaControl;
+    public:
+        doorManager(){
+            mainEntrance = NULL;
+            colaControl = new Cola<Node<Door>>();
+            mainEntrance = new Node<Door>();
+        }
+        void generateDoor(int pTotaldoors){
+            Door *maindoor = new Door();
+            maindoor->setMaindoor();
+            mainEntrance = new Node<Door>(maindoor); 
+            colaControl->enqueue(mainEntrance);
+            //este while y for esta sus de momento, arreglar luego
+            while (colaControl->getSize()!=0 && pTotaldoors>0) {
+                Node<Door> *currentDoor = colaControl->dequeue(); //retorna un nodo tipo t
+                int cantidad = rand()%4 + 1;
+            //aca llegue en la programada
+                for(;cantidad>0 && pTotalDoors>0; cantidad--) {
+                    pTotalDoors--;
+                    Door *newDoor = new Door();
+                    Node<Door> *newNode = new Node<Door>(newDoor);
+                    currentDoor[cantidad-1] = newNode;
+
+                    controlQueue.enqueue(newNode);
+                }   
+            }
+
+        }
+
+
+};
 /*
 class Tunel {
     public:
@@ -5,7 +44,7 @@ class Tunel {
         int maxDistance;
         int totalMinerales;
 }
-
+clase tunel va conectada a clase door
 class Door { 
     
     public: 

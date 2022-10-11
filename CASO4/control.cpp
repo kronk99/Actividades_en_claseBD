@@ -17,4 +17,6 @@ int main(){
     cola->enqueue(&a , "bananos");
     cola->enqueue(&a , "papas");
     cout<< "el nombre es: 6  "<<cola->dequeue()->getNombre()<<endl; //debe tirar bananos
+
 }
+
