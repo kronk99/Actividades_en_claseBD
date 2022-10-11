@@ -28,12 +28,14 @@ class Node {
             nomMinero = minero;
             this->data = pData;
             next = NULL;
-            this->nombreCueva = name;
         }
 
         T* getData() {
-            printf("el minero trajo : s%" ; nomMinero);
+            //printf("el minero trajo : s%" ; nomMinero);
             return data;
+        }
+        string getNombre(){ //FUNCION PROVISIONAL PARA PROBAR COLA, ELIMINAR DESPUES.
+            return nomMinero;
         }
         Node* getNext() { // esta linea se agrega para quiz #4 #5
             return next;

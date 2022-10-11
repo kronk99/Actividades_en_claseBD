@@ -19,8 +19,17 @@ class Cola  {
             size = 0;
         }
         //direccion puedo utilizarlo como indice del array
+        void enqueueSafe(T *pData , string nomMinero){
+            /* antes del enqueue el mutex hace lock unique_lock<std::mutex> ul(g_mutex);
+            */
+            enqueue(T *pData , string nomMinero);
+        /*despues del enqueue se hace el unlock con el mutex
+
+        */
+        } 
         void enqueue(T *pData , string nomMinero ) { //hay que modificar el add para que añada a cada
         //nodo otro nodo con las probalilidades.
+
             Node<T> *newNode = new Node<T>(pData , nomMinero);
             if (size>0) {
                 this->last->setNext(newNode);
@@ -32,6 +41,7 @@ class Cola  {
             }
             size++;
         }
+        //hacer un dequeue safe con un mutex unlock y lock.
         Node<T>* dequeue() {
             return this->first;
             Pop();

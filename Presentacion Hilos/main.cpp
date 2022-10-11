@@ -8,7 +8,9 @@
 #include "Miner.cpp"
 using namespace std;
 bool ready = false; //flag global
-Cola<int> *bodega = new Cola<int>();
+Cola<int> *bodega = new Cola<int>(); //cola global.
+//esto se podria hacer en una clase con insertar y con el consumir.
+//*************codigo en alpha phase*********************************
 int moveMinerExplorer(){
     int randomMineral = 0;
     int randomNumber = 0;
@@ -23,7 +25,8 @@ int moveMinerExplorer(){
         //este for de abajo se debe ejecutar por segundo
         for(caminadaIda ; caminadaIda>=0; caminadaIda-=20){
             cout<<"el explorer esta caminando"<<endl;
-            this_thread::sleep_for (std::chrono::seconds(1));
+            this_thread::sleep_for (std::chrono::seconds(1)); //funcion del thread que 
+            //congela por una cantidad de tiempo (1s)
         }
         randomMineral = rand() % 20;
         //explorer->cantminada(randomMineral);
@@ -36,6 +39,7 @@ int moveMinerExplorer(){
     }
     return randomMineral;
 }
+//**********************************************************//
 void explorer(){ //hilo de movimiento de explorer
     int i = 0;
     Miner *explorer = new Miner(20 , "explorer" , 8);
@@ -48,7 +52,7 @@ void explorer(){ //hilo de movimiento de explorer
         i++;
     }
 }
-void topo(){
+void topo(){ //hilo del movimiento del topo
     int i = 0;
     Miner *topo = new Miner(7 , "topo" , 15);
     while(i<3){
@@ -60,7 +64,7 @@ void topo(){
         i++;
     }
 }
-void carguero(){
+void carguero(){//hilo del movimiento del carguero
     int i = 0;
     Miner *carguero = new Miner(10 , "carguero" , 40);
     while(i<3){
@@ -72,7 +76,7 @@ void carguero(){
         i++;
     }
 }
-void Jefe(){
+void Jefe(){//hilo del "lector (el consumidor"
     int i=0;
     Node<int> *cuentasJefe;
     while(i<2){
@@ -91,4 +95,13 @@ int main(){
     t2.join();
     t3.join();
     t4.join();
+    /*
+    asi se podria meter 
+    el hilo con parametros
+    Topo miTopo = new Topo( aqui podrian ir parametros);
+miTopo.setVelocity(37);
+miTopo.setTiming(100);
+Thread hilo(miTopo.procesar);
+hilo.join();
+    */
 }

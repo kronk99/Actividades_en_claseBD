@@ -1,4 +1,4 @@
-
+/*
 class Tunel {
     public:
         AVLTree tunel;
@@ -73,6 +73,7 @@ class DoorManager {
             }
         }
 }
+*/
 
 
 
