@@ -3,7 +3,7 @@
 #include "doorManager.h"
 int main(){
     doorManager *constructor = new doorManager();
-    constructor->generateDoor(8);
+    constructor->generateDoor(10);
     //ESTA ES UNA CLASE PARA PROBAR LAS LISTAS Y SU CORRECTO FUNCIONAMIENTO
     /*
     Cola<int> *cola = new Cola<int>();

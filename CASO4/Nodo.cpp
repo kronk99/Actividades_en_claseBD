@@ -33,8 +33,8 @@ class Nodo {
         T* getData() {
             return data;
         }
-        Nodo* getCardinals(){ //con esto podre añadir directamente?
-            return cardinals[4]; //esto esta mal no se por que
+        Nodo** getCardinals(){ //con esto podre añadir directamente?
+            return this->cardinals; //esto esta mal no se por que
         }
         Nodo* getPrev() { 
             return prev;

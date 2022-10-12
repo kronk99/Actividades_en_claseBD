@@ -33,7 +33,6 @@ class Cola  {
                 size++;
             }
             else {
-                cout<<"el nodo es un first"<<endl;
                 this->first = newNode;
                 this->last = newNode;
                 size++;
@@ -71,7 +70,7 @@ class Cola  {
                 
                 Nodes<T> *current = first;
                 first = current->getNext(); 
-                current->setNext(NULL); //el error esta aca cuando queda 1 elemento 
+                current->setNext(NULL); 
                 size-=1;
             }
             else if(size==1){

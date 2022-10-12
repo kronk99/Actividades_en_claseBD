@@ -23,24 +23,26 @@ class doorManager{
             //este while y for esta sus de momento, arreglar luego
             int iteraciones = 0;
             while (colaControl->getSize()!=0 && pTotaldoors>0) {
-                cout<<"entra al ciclo while"<<endl;
+                
                 Nodes<Nodo<Door>> *queueNode = colaControl->dequeue(); 
-                cout<<"hace dequeue"<<endl;
-                Nodo<Door> *currentDoor = queueNode->getData();
+                
+                Nodo<Door> *currentDoor = queueNode->getData(); //inserte el puntero de nodo metido
+                //en el nodo de nodos puntero.
                 int cantidad = rand()%4 + 1;
-                cout<<"hace el random"<<endl;
             //esto de abajo es el total de puertas aleatorias que 
             //crea (norte,sur,este,oeste) y pTotaldoors es la cantidad
             //de puertas que el usuario inserta.
                 for(cantidad && pTotaldoors;cantidad>0 && pTotaldoors>0; cantidad--) {
-                    cout<<"entra al ciclo for"<<endl;
+                    
                     pTotaldoors--;
                     Door *newDoor = new Door();
                     Nodo<Door> *newNode = new Nodo<Door>(newDoor);
                     newNode->setPrev(currentDoor); //LINEA EXPERIMENTAL
-                    cout<<"pone un previus"<<endl;
-                    currentDoor->getCardinals()[cantidad-1] =newDoor;
-                    cout<<"pone el nodo en los cardenales"<<endl;
+                    currentDoor->getCardinals()[cantidad-1] =newNode; //puede que 
+                    //esto me genere errores REVISAR CLASE NODO VER SI YO
+                    //RETORNAR EL ARRAY DE NODOS E INSERTAR, QUIZA ESTO ME GENERE EL ERROR
+                    //Y ME
+                    
                     colaControl->enqueue(newNode);
                     cout<<"se inserto la puerta"<<cantidad<<" en el nodo"<<endl;
                 }
