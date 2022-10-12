@@ -2,41 +2,58 @@
 #include "Door.cpp"
 #include "List.cpp"
 #include "Cola.h"
-#include "Node.cpp"
+#include "Nodo.cpp"
+#ifndef DOORMANAGER 
+#define DOORMAGANER 1
 class doorManager{
     private:
-        Node<Door> *mainEntrance ; //puntero al nodo de la entrada principal
-        Cola<Node<Door>> *colaControl;
+        Nodo<Door> *mainEntrance ; //puntero al nodo de la entrada principal
+        Cola<Nodo<Door>> *colaControl;
+        
     public:
         doorManager(){
             mainEntrance = NULL;
-            colaControl = new Cola<Node<Door>>();
-            mainEntrance = new Node<Door>();
+            colaControl = new Cola<Nodo<Door>>();
         }
         void generateDoor(int pTotaldoors){
             Door *maindoor = new Door();
             maindoor->setMaindoor();
-            mainEntrance = new Node<Door>(maindoor); 
+            mainEntrance = new Nodo<Door>(maindoor); 
             colaControl->enqueue(mainEntrance);
             //este while y for esta sus de momento, arreglar luego
+            int iteraciones = 0;
             while (colaControl->getSize()!=0 && pTotaldoors>0) {
-                Node<Door> *currentDoor = colaControl->dequeue(); //retorna un nodo tipo t
+                cout<<"entra al ciclo while"<<endl;
+                Nodes<Nodo<Door>> *queueNode = colaControl->dequeue(); 
+                cout<<"hace dequeue"<<endl;
+                Nodo<Door> *currentDoor = queueNode->getData();
                 int cantidad = rand()%4 + 1;
-            //aca llegue en la programada
-                for(;cantidad>0 && pTotalDoors>0; cantidad--) {
-                    pTotalDoors--;
+                cout<<"hace el random"<<endl;
+            //esto de abajo es el total de puertas aleatorias que 
+            //crea (norte,sur,este,oeste) y pTotaldoors es la cantidad
+            //de puertas que el usuario inserta.
+                for(cantidad && pTotaldoors;cantidad>0 && pTotaldoors>0; cantidad--) {
+                    cout<<"entra al ciclo for"<<endl;
+                    pTotaldoors--;
                     Door *newDoor = new Door();
-                    Node<Door> *newNode = new Node<Door>(newDoor);
-                    currentDoor[cantidad-1] = newNode;
-
-                    controlQueue.enqueue(newNode);
-                }   
+                    Nodo<Door> *newNode = new Nodo<Door>(newDoor);
+                    newNode->setPrev(currentDoor); //LINEA EXPERIMENTAL
+                    cout<<"pone un previus"<<endl;
+                    currentDoor->getCardinals()[cantidad-1] =newDoor;
+                    cout<<"pone el nodo en los cardenales"<<endl;
+                    colaControl->enqueue(newNode);
+                    cout<<"se inserto la puerta"<<cantidad<<" en el nodo"<<endl;
+                }
+                iteraciones+=1;
+                cout<<"las iteraciones son:"<<iteraciones<<endl;
+                cout<<"el size es"<<colaControl->getSize()<<endl;  
             }
 
         }
 
 
 };
+#endif
 /*
 class Tunel {
     public:

@@ -1,17 +1,17 @@
 #include <iostream>
 #include <string>
 
-#ifndef NODE 
+#ifndef NODES 
 
-#define NODE 1
+#define NODES 1
 
 using namespace std;
 
 // 1. pasar este nodo a doblemente enlazado
 template <class T>
-class Node {
+class Nodes {
     private:
-        Node *next;
+        Nodes *next;
         T *data;
         string nomMinero;
         //AVL *camPrincip; //puntero al arbol avl con la cámara principal.
@@ -19,13 +19,12 @@ class Node {
         //el metodo getAVL
     
     public:
-        Node() {
+        Nodes() {
             data = NULL;
             next = NULL;
         }
 
-        Node(T *pData , string minero) {
-            nomMinero = minero;
+        Nodes(T *pData ) {
             this->data = pData;
             next = NULL;
         }
@@ -34,13 +33,10 @@ class Node {
             //printf("el minero trajo : s%" ; nomMinero);
             return data;
         }
-        string getNombre(){ //FUNCION PROVISIONAL PARA PROBAR COLA, ELIMINAR DESPUES.
-            return nomMinero;
-        }
-        Node* getNext() { // esta linea se agrega para quiz #4 #5
+        Nodes* getNext() { // esta linea se agrega para quiz #4 #5
             return next;
         }
-        void setNext(Node *pValue) {
+        void setNext(Nodes *pValue) {
             this->next = pValue;
         }
 };

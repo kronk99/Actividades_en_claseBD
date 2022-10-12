@@ -1,6 +1,11 @@
 #include <iostream>
 #include "Cola.h"
+#include "doorManager.h"
 int main(){
+    doorManager *constructor = new doorManager();
+    constructor->generateDoor(8);
+    //ESTA ES UNA CLASE PARA PROBAR LAS LISTAS Y SU CORRECTO FUNCIONAMIENTO
+    /*
     Cola<int> *cola = new Cola<int>();
     int a = 3;
     cola->enqueue(&a , "pepito");
@@ -17,6 +22,6 @@ int main(){
     cola->enqueue(&a , "bananos");
     cola->enqueue(&a , "papas");
     cout<< "el nombre es: 6  "<<cola->dequeue()->getNombre()<<endl; //debe tirar bananos
-
+*/
 }
 

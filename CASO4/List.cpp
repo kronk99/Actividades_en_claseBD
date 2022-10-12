@@ -1,3 +1,4 @@
+/*
 #include "Node.cpp"
 
 #ifndef LIST 
@@ -12,6 +13,7 @@ class List  {
        // Node<T> *last; //perhaps unnecesary for this game.
         Node<T> *searchPosition;
         int size;
+        Node<T> *last;
     public:
         List() {
             first = NULL;
@@ -55,3 +57,4 @@ class List  {
 };
 
 #endif
+*/

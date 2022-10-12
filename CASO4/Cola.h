@@ -1,5 +1,6 @@
-#include "Node.h"
-
+#include "Nodes.h"
+#include "Door.cpp"
+#include "Nodo.cpp"
 #ifndef COLA 
 
 #define COLA 1
@@ -8,53 +9,55 @@
 template <typename T> 
 class Cola  {
     private:
-        Node<T> *first;
-        Node<T> *Empty;
+        Nodes<T> *first;
+        Nodes<T> *Empty;
         int size;
-        Node<T> *last;
+        Nodes<T> *last;
     public:
         Cola() {
             first = NULL;
             last = NULL;
-            size = 0;
-            Empty = new Node<T>(&size , "vacio");
+            Door *emptyDoor = new Door;
+            Nodo<Door> *empty = new Nodo<Door>();
+            emptyDoor->setEmpty();
+            Empty = new Nodes<T>(empty); //el empty no sirve arreglar esto
         }
         //direccion puedo utilizarlo como indice del array
-        void enqueue(T *pData , string nomMinero ) { //hay que modificar el add para que añada a cada
+        void enqueue(T *pData) { //hay que modificar el add para que añada a cada
         //nodo otro nodo con las probalilidades.
-            Node<T> *newNode = new Node<T>(pData , nomMinero);
+            Nodes<T> *newNode = new Nodes<T>(pData);
             if (size>0) {
                 this->last->setNext(newNode);
                 this->last = newNode;
-                cout<<"se inserto:"<<last->getNombre()<<endl;
+                
                 size++;
             }
             else {
                 cout<<"el nodo es un first"<<endl;
                 this->first = newNode;
                 this->last = newNode;
-                cout<<"se inserto como cabeza"<<first->getNombre()<<endl;
-                cout<<"se inserto como cola"<<last->getNombre()<<endl;
                 size++;
 
             }
             //size++;
         }
-        Node<T>* dequeue() { //tal vez hacer un codicional si el first no es nulo.
+        Nodes<T>* dequeue() { //tal vez hacer un codicional si el first no es nulo.
             if(size >=1){
             /*esta condicional la meti aca y no en el pop por que al reali<ar
             pruebas, al intentar eliminar un elemento vacio y siplemente imprimir
             "la lista esta vacia" y luego volver a intenar insertar, el codigo
             no me inserta, pero si inserto esta condicional aca, el codigo si puede 
             borrar y eliminar varias veces.*/
-                Node<T> *result= this->first;
+                Nodes<T> *result= this->first;
                 Pop();
                 return result;
             }
             else{
                 cout<<"la lista esta vacia"<<endl;
                 return Empty; //este return null me daña el programa
-                //entonces retorna un nodo Empty.
+                //entonces retorna un nodo llamado Empty que tiene un objeto puerta
+                //que indica "vacio" , ese vacio es condicion a la hora de verificar 
+                //la cola de datos.
             }
         }
         int getSize() {
@@ -66,7 +69,7 @@ class Cola  {
         void Pop(){
             if(size >1){
                 
-                Node<T> *current = first;
+                Nodes<T> *current = first;
                 first = current->getNext(); 
                 current->setNext(NULL); //el error esta aca cuando queda 1 elemento 
                 size-=1;
