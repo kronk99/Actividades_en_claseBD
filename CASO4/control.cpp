@@ -1,9 +1,24 @@
 #include <iostream>
 #include "Cola.h"
 #include "doorManager.h"
+#include <chrono>
+#include <thread>
+#include "Miner.cpp"
 int main(){
     doorManager *constructor = new doorManager();
-    constructor->generateDoor(10);
+    constructor->generateDoor(8);
+    Nodo<Door> *entrada = constructor->getEntrada(); //me esta regresando esto nulo.
+    //no se si me esta retornando nulo por que los datos se pierden o por que
+    //entrada = entrada->getCardinals()[3];
+    cout<<"me regresa la puerta"<<endl;
+    //Door *puerta = entrada->getDoor();
+    cout<<"coloque la puerta en una variable tipo puerta"<<endl;
+    cout<<"la puerta 3 contiene el id:" << entrada->getDoor()->getId();
+    //CREO QUE EL ERROR ES QUE NO ESTA INSERTANDO CORRECTAMENTEA*************
+    //Miner *edgar = new Miner(20 , "edgar", 2,  entrada);
+    //edgar->moveMinerExplorer();
+    //doorManager *constructor = new doorManager();
+    //constructor->generateDoor(8);
     //ESTA ES UNA CLASE PARA PROBAR LAS LISTAS Y SU CORRECTO FUNCIONAMIENTO
     /*
     Cola<int> *cola = new Cola<int>();

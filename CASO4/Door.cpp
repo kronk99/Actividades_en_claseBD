@@ -18,7 +18,6 @@ class Door{
                 tunel = true;
             }
         }
-
         void generateTunels() {
         }
         int getId(){
@@ -29,6 +28,9 @@ class Door{
         }
         void setEmpty(){
             empty = true;
+        }
+        void setId(int number){
+            this->id = number;
         }
 };
 #endif

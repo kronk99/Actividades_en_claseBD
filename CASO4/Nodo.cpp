@@ -30,8 +30,8 @@ class Nodo {
         void addDoor(T *datas){
             this->door = datas;
         }
-        T* getData() {
-            return data;
+        T* getDoor() {
+            return door;
         }
         Nodo** getCardinals(){ //con esto podre añadir directamente?
             return this->cardinals; //esto esta mal no se por que

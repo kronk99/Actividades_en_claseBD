@@ -15,8 +15,13 @@ class doorManager{
             mainEntrance = NULL;
             colaControl = new Cola<Nodo<Door>>();
         }
+        Nodo<Door>* getEntrada(){
+            return this->mainEntrance;
+        }
         void generateDoor(int pTotaldoors){
+            int numberDoor = 0;
             Door *maindoor = new Door();
+            maindoor->setId(1); //linea de prueba
             maindoor->setMaindoor();
             mainEntrance = new Nodo<Door>(maindoor); 
             colaControl->enqueue(mainEntrance);
@@ -36,6 +41,7 @@ class doorManager{
                     
                     pTotaldoors--;
                     Door *newDoor = new Door();
+                    //newDoor->setId(numberDoor);
                     Nodo<Door> *newNode = new Nodo<Door>(newDoor);
                     newNode->setPrev(currentDoor); //LINEA EXPERIMENTAL
                     currentDoor->getCardinals()[cantidad-1] =newNode; //puede que 
@@ -44,7 +50,8 @@ class doorManager{
                     //Y ME
                     
                     colaControl->enqueue(newNode);
-                    cout<<"se inserto la puerta"<<cantidad<<" en el nodo"<<endl;
+                    cout<<"se inserto el id:"<<numberDoor<<"en la puerta"<<cantidad<<" en el nodo"<<endl;
+                    numberDoor+=1;
                 }
                 iteraciones+=1;
                 cout<<"las iteraciones son:"<<iteraciones<<endl;
