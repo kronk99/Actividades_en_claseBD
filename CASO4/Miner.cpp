@@ -37,6 +37,7 @@ class Miner{
         void offReady(){
             this->ready=false;
         }//funcion encargada del movimiento de los mineros.
+        /*
         void moveMinerExplorer(){
             //por ahora se va a mover 3 veces, luego se tiene que 
             //mover con pilas de direccion de hacia adonde habia entrado.
@@ -59,5 +60,6 @@ class Miner{
         string getName(){
             return nombre;
         }
+        */
 };
 #endif

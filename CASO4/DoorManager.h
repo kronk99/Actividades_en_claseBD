@@ -41,14 +41,11 @@ class doorManager{
                     
                     pTotaldoors--;
                     Door *newDoor = new Door();
-                    //newDoor->setId(numberDoor);
+                    newDoor->setId(numberDoor);
                     Nodo<Door> *newNode = new Nodo<Door>(newDoor);
                     newNode->setPrev(currentDoor); //LINEA EXPERIMENTAL
-                    currentDoor->getCardinals()[cantidad-1] =newNode; //puede que 
-                    //esto me genere errores REVISAR CLASE NODO VER SI YO
-                    //RETORNAR EL ARRAY DE NODOS E INSERTAR, QUIZA ESTO ME GENERE EL ERROR
-                    //Y ME
-                    
+                    currentDoor->setCardinal(cantidad-1 , newNode); 
+                    //MODIFIQUE ESTO****************
                     colaControl->enqueue(newNode);
                     cout<<"se inserto el id:"<<numberDoor<<"en la puerta"<<cantidad<<" en el nodo"<<endl;
                     numberDoor+=1;

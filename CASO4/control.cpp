@@ -9,12 +9,15 @@ int main(){
     constructor->generateDoor(8);
     Nodo<Door> *entrada = constructor->getEntrada(); //me esta regresando esto nulo.
     //no se si me esta retornando nulo por que los datos se pierden o por que
-    //entrada = entrada->getCardinals()[3];
+    entrada = entrada->getNodo(2);
+    entrada=entrada->getNodo(1);
     cout<<"me regresa la puerta"<<endl;
     //Door *puerta = entrada->getDoor();
     cout<<"coloque la puerta en una variable tipo puerta"<<endl;
-    cout<<"la puerta 3 contiene el id:" << entrada->getDoor()->getId();
-    //CREO QUE EL ERROR ES QUE NO ESTA INSERTANDO CORRECTAMENTEA*************
+    cout<<"la puerta  el id:" << entrada->getDoor()->getId();
+    //NO ESTA INSERTANDO EN EL ARRAY , POR LO QUE SE DEBE DE HACER UN METODO
+    //SET ARRAY CON ARGUMENTOS NUMEROS DEL 0 AL 4 Y UN SWITCH CASE PARA CADA NUMERO
+    //IGUAL PARA EL GETARAY , UN METODO CON ARGUMENTOS DEL 0 AL 4
     //Miner *edgar = new Miner(20 , "edgar", 2,  entrada);
     //edgar->moveMinerExplorer();
     //doorManager *constructor = new doorManager();
