@@ -12,6 +12,7 @@ template <class T>
 class Nodes {
     private:
         Nodes *next;
+        Nodes *previus;
         T *data;
         string nomMinero;
         //AVL *camPrincip; //puntero al arbol avl con la cámara principal.
@@ -22,11 +23,15 @@ class Nodes {
         Nodes() {
             data = NULL;
             next = NULL;
+            previus = NULL;
         }
 
         Nodes(T *pData ) {
             this->data = pData;
             next = NULL;
+        }
+        void setData(T *pData){
+            this->data = pData;
         }
 
         T* getData() {
@@ -36,9 +41,16 @@ class Nodes {
         Nodes* getNext() { // esta linea se agrega para quiz #4 #5
             return next;
         }
+        Nodes* getPrevius(){
+            return previus;
+        }
         void setNext(Nodes *pValue) {
             this->next = pValue;
         }
+        void setPrevius(Nodes *pValue){
+            this->previus = pValue;
+        }
+        //AÑADI UN GETPREVIUS SET PREVIUS Y UN ATRIBUTO PREVIUS
 };
 
 #endif

@@ -4,8 +4,10 @@
 #include <string>
 #include "Nodo.cpp"
 #include "Door.cpp"
+#include "Pila.h"
 #ifndef MINER
 #define MINER 1
+
 
 using namespace std; //AÑADIDO NUEVO**
 class Miner{
@@ -15,13 +17,18 @@ class Miner{
         string nombre; //nombre del minero
         bool ready; //FLAG para el ciclo del movimiento.
         Nodo<Door> *current; //se va a probae hacer nodo generic ***AÑADIDO NUEVO**
+        Pila<Nodo<Door>> *mapa;
+        int totalDoors;
+
     public:
     //constructor de la clase mineros
-        Miner(int pVelocidad , string name , int maxminerales , Nodo<Door> *entrada){
+        Miner(int pVelocidad , string name , int maxminerales , Nodo<Door> *entrada , int ptotalDoors){
             velocidad = pVelocidad;
             nombre = name;
             cantidadMax = maxminerales;
             current = entrada; //**AÑADIDO NUEVO
+            mapa = new Pila<Nodo<Door>>;
+            totalDoors = ptotalDoors;
         }
         void cantminer(int pMinerales){
             cantidadMax = pMinerales;
@@ -37,29 +44,27 @@ class Miner{
         void offReady(){
             this->ready=false;
         }//funcion encargada del movimiento de los mineros.
-        /*
-        void moveMinerExplorer(){
-            //por ahora se va a mover 3 veces, luego se tiene que 
-            //mover con pilas de direccion de hacia adonde habia entrado.
-            int a= 0;
-            while(a !=3){ //TODO ESTO SE AÑADIO NUEVO
-                Door *currentDorr =current->getDoor();
-                cout<<"el minero "<<nombre<<"esta en la puerta: " << currentDorr->getId()<<endl;
-                int selectedDoor = rand() % 4; 
-                if (current->getCardinals()[selectedDoor] != NULL){
-                    current = current->getCardinals()[selectedDoor];
-                    cout<<"se entra aca"<<endl;
+        void buildPath(){
+            int counterBacks;
+            mapa->Push(current);
+            while(totalDoors !=0){
+                int number = rand()%4-1;
+                if(counterBacks !=4){
+//si el nodo no es nulo, y si el nodo no esta en la lista donde me meti
+                    if(current->getNodo(number)!= NULL && current->getNodo(number)!=/*aca va el selection sort*/){
+                        current =current->getNodo(number);
+                    }
                 }
-                else{
-                    current = current->getPrev();
-                    cout<<"se devolvio"<<endl;
-                }
-                a+=1;
+                totalDoors--;
             }
         }
         string getName(){
             return nombre;
         }
-        */
+            //van a tener 3 formas de buscar, improvisacion que va a ser con randoms
+            //y va a guardar esos randoms
+            //conocedor , ya sabe cuantas puertas hay 
+            //borracho , va a usar randoms para acceder a puertas
+
 };
 #endif

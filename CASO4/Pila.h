@@ -25,7 +25,8 @@ class Pila  {
             Nodes<T> *newNode = new Nodes<T>(pData);
             if (size>0) {
                 newNode->setNext(first);
-                first->setNext(newNode);
+                first->setPrevius(newNode);
+                first=newNode;
                 size++;
             }
             else {
@@ -35,10 +36,10 @@ class Pila  {
             }
             //size++;
         }
+
         Nodes<T>* Peak() { //tal vez hacer un codicional si el first no es nulo.
             if(size >=1){
                 Nodes<T> *result= this->first;
-                Pop();
                 return result;
             }
             else{
@@ -58,12 +59,12 @@ class Pila  {
                 
                 Nodes<T> *current = first;
                 first = current->getNext(); 
+                first->setPrevius(NULL);
                 current->setNext(NULL); 
                 size-=1;
             }
             else if(size==1){
                 first = NULL;
-                last = NULL;
                 size-=1;
                 cout<<"el size es :"<<size<<endl;
             }
