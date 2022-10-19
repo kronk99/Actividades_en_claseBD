@@ -13,7 +13,7 @@ class InsertionSort{
     public:
         Pila<T>* sort(Pila<T>* pNumberList) {
             //metodo que ordena con el insertion sort
-            Nodes<T> *front = pNumberList->peak();
+            Nodes<T> *front = pNumberList->Peak();
             Nodes<T> *back = NULL;
             
             while(front != NULL) {
@@ -21,14 +21,14 @@ class InsertionSort{
                 back = front->getNext();
                 //mientras que esten dos desordenados, y aun no se haya llegado al final:
 
-                while((back != NULL) && (back->getPrevious() != NULL) && (*back->getData()->getDoor()->getId() > *back->getPrevious()->getData()->getDoor()->getId())) {
+                while((back != NULL) && (back->getPrevius() != NULL) && back->getData()->getDoor()->getId() > back->getPrevius()->getData()->getDoor()->getId()) {
                     //incrementamos contador de comparaciones
                     compares++;
 
                     //darle la vuelta a los nodos change1 y change2
-                    Node<T>* change1 = back;
-                    Node<T>* change2 = back->getPrevious();
-                    Node<T>* change3 = back;
+                    Nodes<T> *change1 = back;
+                    Nodes<T> *change2 = back->getPrevius();
+                    Nodes<T> *change3 = back;
                     //hasta aca voy bien 
                     //int valor = *change1->getData();
                     change1->setData(change2->getData());
@@ -37,9 +37,9 @@ class InsertionSort{
                     interchanges++;
 
                     //vamos al nodo previo
-                    back = back->getPrevious();
+                    back = back->getPrevius();
                 }
-                if((back != NULL) && (back->getPrevious() != NULL)) {
+                if((back != NULL) && (back->getPrevius() != NULL)) {
                     //incrementamos contador de comparaciones
                     compares++;
                 } 

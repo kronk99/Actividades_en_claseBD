@@ -11,6 +11,7 @@ class Pila  {
     private:
         Nodes<T> *first;
         Nodes<T> *Empty;
+        //ocupo Un nodo al last, para el binary search.
         int size;
     public:
         Pila() {
@@ -28,10 +29,12 @@ class Pila  {
                 first->setPrevius(newNode);
                 first=newNode;
                 size++;
+                cout<<"se creo un nodo nuevo"<<endl;
             }
             else {
                 this->first = newNode;
                 size++;
+                cout<<"se creo un nodo first"<<endl;
 
             }
             //size++;
@@ -47,6 +50,18 @@ class Pila  {
                 return NULL; //VERIFICAR SI ESTE RETURN NULL NO DAÑA EL PROGRAMA
                 //SI LO DAÑA CAMBIELO POR EMPTY.
             }
+        }
+        bool searchNode(Nodo<Door> *pValuetoSearch){
+            Nodes<T> *current = first;
+            bool result = false;
+            while(current != NULL){
+                if (current->getData()==pValuetoSearch){
+                    result = true;
+                    break;
+                }
+                current = current->getNext();
+            }
+            return result;
         }
         int getSize() {
             return size;

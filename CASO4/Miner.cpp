@@ -5,10 +5,9 @@
 #include "Nodo.cpp"
 #include "Door.cpp"
 #include "Pila.h"
+#include "InsertionSort.cpp"
 #ifndef MINER
 #define MINER 1
-
-
 using namespace std; //AÑADIDO NUEVO**
 class Miner{
     private:
@@ -19,6 +18,8 @@ class Miner{
         Nodo<Door> *current; //se va a probae hacer nodo generic ***AÑADIDO NUEVO**
         Pila<Nodo<Door>> *mapa;
         int totalDoors;
+        InsertionSort<Nodo<Door>> *toOrder;
+        
 
     public:
     //constructor de la clase mineros
@@ -27,8 +28,9 @@ class Miner{
             nombre = name;
             cantidadMax = maxminerales;
             current = entrada; //**AÑADIDO NUEVO
-            mapa = new Pila<Nodo<Door>>;
+            mapa = new Pila<Nodo<Door>>();
             totalDoors = ptotalDoors;
+            toOrder = new InsertionSort<Nodo<Door>>();
         }
         void cantminer(int pMinerales){
             cantidadMax = pMinerales;
@@ -45,26 +47,47 @@ class Miner{
             this->ready=false;
         }//funcion encargada del movimiento de los mineros.
         void buildPath(){
-            int counterBacks;
-            mapa->Push(current);
+            int counterBacks=0;
+            int a = 0;
+            cout<<"se llego antes del push del current a la pila"<<endl;
+            mapa->Push(current); //esto no esta sirviendo, hasta aca ejecuta el programa.
+            cout<<"se llego despues del push del current a la pila"<<endl;
             while(totalDoors !=0){
+                cout<<"se entro al ciclo while"<<endl;
                 int number = rand()%4-1;
+                cout<<"se saco un random, el cual es: "<<number<<endl;
                 if(counterBacks !=4){
-//si el nodo no es nulo, y si el nodo no esta en la lista donde me meti
-                    if(current->getNodo(number)!= NULL && current->getNodo(number)!=/*aca va el selection sort*/){
+                    cout<<"se entra al if de counterbacks !=4"<<endl;
+                    //probablemente ese search ese searchNode esta malo.
+                    if(current->getNodo(number+1)!= NULL && mapa->searchNode(current->getNodo(number+1))!=true){
+                        cout<<"se entro if que verifica si el nodo esta en la pila y no es nulo"<<endl;
+                        //el true es si es true, es que esta en la pila, si no, es que no esta en la pila.
                         current =current->getNodo(number);
+                        mapa->Push(current);
+                        cout<<"se hace push al nuevo current"<<endl;
+                        mapa = toOrder->sort(mapa); //muy probablemente hayan errores en este
+                        //sort, revisar esto bien
+                        cout<<"se ordena la pila"<<endl;
+                        cout<<"me meti a la puerta:"<<current->getDoor()->getId()<<endl;
+                        totalDoors--;
                     }
+                    else{
+                        counterBacks+=1;
+                        cout<<"esa puerta ya la revise, counterbacks : "<<counterBacks<<endl;
+                    }
+                    totalDoors--;
                 }
-                totalDoors--;
+                else{//si el counterbacks es 4 , entonces devuelvase al nodo anterior.
+                    counterBacks = 0;
+                    current = current->getPrev();
+                    cout<<"me devolvi a la puerta:"<<current->getDoor()->getId()<<endl;
+                    totalDoors--;
+                }
             }
         }
         string getName(){
             return nombre;
         }
-            //van a tener 3 formas de buscar, improvisacion que va a ser con randoms
-            //y va a guardar esos randoms
-            //conocedor , ya sabe cuantas puertas hay 
-            //borracho , va a usar randoms para acceder a puertas
 
 };
 #endif

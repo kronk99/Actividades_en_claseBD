@@ -7,12 +7,13 @@
 int main(){
     doorManager *constructor = new doorManager();
     constructor->generateDoor(8);
-    Nodo<Door> *entrada = constructor->getEntrada(); //me esta regresando esto nulo.
-    //no se si me esta retornando nulo por que los datos se pierden o por que
-    entrada = entrada->getNodo(2);
-    entrada=entrada->getNodo(1);
-    cout<<"coloque la puerta en una variable tipo puerta"<<endl;
-    cout<<"la puerta  el id:" << entrada->getDoor()->getId();
+    Nodo<Door> *entrada = constructor->getEntrada(); 
+    Miner *miner = new Miner(20 ,"pepe", 10 , entrada , 8 );
+    miner->buildPath();
+    //entrada = entrada->getNodo(2);
+    //entrada=entrada->getNodo(1);
+    //cout<<"coloque la puerta en una variable tipo puerta"<<endl;
+    //cout<<"la puerta  el id:" << entrada->getDoor()->getId();
     //ESTA ES UNA CLASE PARA PROBAR LAS LISTAS Y SU CORRECTO FUNCIONAMIENTO
     /*
     Cola<int> *cola = new Cola<int>();

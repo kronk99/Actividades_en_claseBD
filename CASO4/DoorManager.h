@@ -19,9 +19,9 @@ class doorManager{
             return this->mainEntrance;
         }
         void generateDoor(int pTotaldoors){
-            int numberDoor = 0;
+            int numberDoor = 1;
             Door *maindoor = new Door();
-            maindoor->setId(1); //linea de prueba
+            maindoor->setId(0); //linea de prueba
             maindoor->setMaindoor();
             mainEntrance = new Nodo<Door>(maindoor); 
             colaControl->enqueue(mainEntrance);
