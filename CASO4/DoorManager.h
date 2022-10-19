@@ -47,7 +47,7 @@ class doorManager{
                     currentDoor->setCardinal(cantidad-1 , newNode); 
                     //MODIFIQUE ESTO****************
                     colaControl->enqueue(newNode);
-                    cout<<"se inserto el id:"<<numberDoor<<"en la puerta"<<cantidad<<" en el nodo"<<endl;
+                    cout<<"se inserto el id:"<<numberDoor<<"en la puerta"<<cantidad-1<<" en el nodo"<<endl;
                     numberDoor+=1;
                 }
                 iteraciones+=1;

@@ -16,9 +16,10 @@ class Miner{
         string nombre; //nombre del minero
         bool ready; //FLAG para el ciclo del movimiento.
         Nodo<Door> *current; //se va a probae hacer nodo generic ***AÑADIDO NUEVO**
-        Pila<Nodo<Door>> *mapa;
+        //Pila<Nodo<Door>> *mapa;
+        Nodo<Door> *prevDoor;
         int totalDoors;
-        InsertionSort<Nodo<Door>> *toOrder;
+        //InsertionSort<Nodo<Door>> *toOrder;
         
 
     public:
@@ -28,9 +29,9 @@ class Miner{
             nombre = name;
             cantidadMax = maxminerales;
             current = entrada; //**AÑADIDO NUEVO
-            mapa = new Pila<Nodo<Door>>();
+            //mapa = new Pila<Nodo<Door>>();
             totalDoors = ptotalDoors;
-            toOrder = new InsertionSort<Nodo<Door>>();
+            //toOrder = new InsertionSort<Nodo<Door>>();
         }
         void cantminer(int pMinerales){
             cantidadMax = pMinerales;
@@ -47,41 +48,38 @@ class Miner{
             this->ready=false;
         }//funcion encargada del movimiento de los mineros.
         void buildPath(){
-            int counterBacks=0;
-            int a = 0;
-            cout<<"se llego antes del push del current a la pila"<<endl;
-            mapa->Push(current); //esto no esta sirviendo, hasta aca ejecuta el programa.
-            cout<<"se llego despues del push del current a la pila"<<endl;
+            //mapa->Push(current); //esto no esta sirviendo, hasta aca ejecuta el programa.
             while(totalDoors !=0){
-                cout<<"se entro al ciclo while"<<endl;
+                int ProbtoReturn = rand()%100;
                 int number = rand()%4-1;
                 cout<<"se saco un random, el cual es: "<<number<<endl;
-                if(counterBacks !=4){
-                    cout<<"se entra al if de counterbacks !=4"<<endl;
-                    //probablemente ese search ese searchNode esta malo.
-                    if(current->getNodo(number+1)!= NULL && mapa->searchNode(current->getNodo(number+1))!=true){
+                if(ProbtoReturn<=60){
+                    if(current->getNodo(number+1)!= NULL && prevDoor !=current->getNodo(number+1)){
                         cout<<"se entro if que verifica si el nodo esta en la pila y no es nulo"<<endl;
                         //el true es si es true, es que esta en la pila, si no, es que no esta en la pila.
-                        current =current->getNodo(number);
-                        mapa->Push(current);
-                        cout<<"se hace push al nuevo current"<<endl;
-                        mapa = toOrder->sort(mapa); //muy probablemente hayan errores en este
+                        prevDoor = current;
+                        current =current->getNodo(number+1);
+                        //mapa = toOrder->sort(mapa); //muy probablemente hayan errores en este
                         //sort, revisar esto bien
-                        cout<<"se ordena la pila"<<endl;
+
                         cout<<"me meti a la puerta:"<<current->getDoor()->getId()<<endl;
-                        totalDoors--;
+                        
                     }
                     else{
-                        counterBacks+=1;
-                        cout<<"esa puerta ya la revise, counterbacks : "<<counterBacks<<endl;
+                        cout<<"ya entre a esa puerta/estaba vacia! "<<endl;
                     }
                     totalDoors--;
                 }
                 else{//si el counterbacks es 4 , entonces devuelvase al nodo anterior.
-                    counterBacks = 0;
+                //hacer un if aca de que si no esta en el inicio devuelvase.
+                    if(current->getPrev() != NULL){
                     current = current->getPrev();
                     cout<<"me devolvi a la puerta:"<<current->getDoor()->getId()<<endl;
-                    totalDoors--;
+                    }
+                    else{
+                        cout<<"ya estoy en la puerta inicial, no puedo retroceder más"<<endl;
+                    }
+                    totalDoors--; 
                 }
             }
         }

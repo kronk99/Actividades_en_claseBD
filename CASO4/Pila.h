@@ -61,6 +61,7 @@ class Pila  {
                 }
                 current = current->getNext();
             }
+            cout<<"RETORNO:"<<result<<endl;
             return result;
         }
         int getSize() {
