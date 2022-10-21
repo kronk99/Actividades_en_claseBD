@@ -19,6 +19,7 @@ class Door{
             }
         }
         void generateTunels() {
+            //aca tengo que crear el avl.
         }
         int getId(){
             return id;
@@ -31,6 +32,9 @@ class Door{
         }
         void setId(int number){
             this->id = number;
+        }
+        bool getEmpty(){
+            return this->empty;
         }
 };
 #endif

@@ -3,6 +3,7 @@
 #include <thread>
 #include <string>
 #include "Nodo.cpp"
+#include "Nodes.h"
 #include "Door.cpp"
 #include "Pila.h"
 #include "InsertionSort.cpp"
@@ -18,6 +19,7 @@ class Miner{
         Nodo<Door> *current; //se va a probae hacer nodo generic ***AÑADIDO NUEVO**
         //Pila<Nodo<Door>> *mapa;
         Nodo<Door> *prevDoor;
+        //Nodes<Camara> *cpositionTree;
         int totalDoors;
         //InsertionSort<Nodo<Door>> *toOrder;
         

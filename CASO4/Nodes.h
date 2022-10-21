@@ -14,11 +14,10 @@ class Nodes {
         Nodes *next;
         Nodes *previus;
         T *data;
-        string nomMinero;
+        //BORRRE NOMBREMINERO
         //AVL *camPrincip; //puntero al arbol avl con la cámara principal.
         //haria falta un metodo que diga addAVL para añadir el arbol aca y
-        //el metodo getAVL
-    
+        //el metodo getAVL    
     public:
         Nodes() {
             data = NULL;
