@@ -19,5 +19,8 @@ class Camara{
         int getPotencialMinado(){
             return cantidadMineral * distancia;
         }
+        void agarrarMinerales(int cantRestar){
+            this->cantidadMineral -=cantRestar;
+        }
 };
 #endif

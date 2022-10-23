@@ -4,12 +4,24 @@
 #include <chrono>
 #include <thread>
 #include "Miner.cpp"
+#include <mutex>
+#include <thread>
+#include <chrono>
+#include <stdlib.h>
+doorManager *constructor = new doorManager();
+void moveminer(){
+    Nodo<Door> *entrada = constructor->getEntrada();
+    Miner *minero = new Miner(20 ,"pepe", 10 , entrada , 8 );
+    minero->buildPath();
+}
 int main(){
-    doorManager *constructor = new doorManager();
+    //doorManager *constructor = new doorManager();
     constructor->generateDoor(8);
-    Nodo<Door> *entrada = constructor->getEntrada(); 
-    Miner *miner = new Miner(20 ,"pepe", 10 , entrada , 8 );
-    miner->buildPath();
+    //Nodo<Door> *entrada = constructor->getEntrada(); 
+    //Miner *minero = new Miner(20 ,"pepe", 10 , entrada , 8 );
+    //minero->buildPath();
+    thread t1(moveminer);
+    t1.join();
     //entrada = entrada->getNodo(2);
     //entrada=entrada->getNodo(1);
     //cout<<"coloque la puerta en una variable tipo puerta"<<endl;
