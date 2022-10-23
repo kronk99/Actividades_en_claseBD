@@ -79,7 +79,7 @@ class Miner{
                     cout<<"me devolvi a la puerta:"<<current->getDoor()->getId()<<endl;
                     }
                     else{
-                        cout<<"ya estoy en la puerta inicial, no puedo retroceder más"<<endl;
+                        cout<<"ya estoy en la puerta inicial, no puedo retroceder mas"<<endl;
                     }
                     totalDoors--; 
                 }

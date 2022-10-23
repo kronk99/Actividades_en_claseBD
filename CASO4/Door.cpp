@@ -1,4 +1,6 @@
 #include <iostream>
+#include "Arbol.cpp"
+#include "Camara.cpp"
 #ifndef DOOR 
 #define DOOR 1
 using namespace std;
@@ -6,20 +8,36 @@ class Door{
     private:
         int id;
         bool isMainDoor;
-        bool tunel = false; //de momento no tengo el arbol , entonces es para
+        bool hayTunel = false; //de momento no tengo el arbol , entonces es para
         //probar las probailidades
         //Tunel tunel;
+        Arbol<Camara> *tuneles;
         bool empty = false;
     public: 
         Door() {
             if (rand()%100<=66) {
-                //tunel = new AVLTree();
-                //generateTunels();
-                tunel = true;
+                tuneles = new Arbol<Camara>();
+                generateTunels();
+                hayTunel = true;
             }
         }
         void generateTunels() {
-            //aca tengo que crear el avl.
+            int deep = 0;
+            while(deep !=750){
+                int random =rand()%20; //cantidad de mineral aleatoria.
+                if(random+deep <= 750){
+                    Camara *newCamara = new Camara(random);
+                    tuneles->insertarMineral(newCamara);
+                    deep += random;
+                }
+                else{
+                   int limit  = 750-deep;
+                   Camara *limitCamara = new Camara(limit);
+                   tuneles->insertarMineral(limitCamara);
+                   deep += limit;
+                }
+            }
+            cout<<"se termina el ciclo"<<endl;
         }
         int getId(){
             return id;

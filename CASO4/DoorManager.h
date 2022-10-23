@@ -28,17 +28,14 @@ class doorManager{
             //este while y for esta sus de momento, arreglar luego
             int iteraciones = 0;
             while (colaControl->getSize()!=0 && pTotaldoors>0) {
-                
+                //EL PRIMER NODO DE ENTRADA PRINCIPAL NO TIENE PUERTAS
+                //ARREGLAR ESTO
                 Nodes<Nodo<Door>> *queueNode = colaControl->dequeue(); 
                 
                 Nodo<Door> *currentDoor = queueNode->getData(); //inserte el puntero de nodo metido
                 //en el nodo de nodos puntero.
                 int cantidad = rand()%4 + 1;
-            //esto de abajo es el total de puertas aleatorias que 
-            //crea (norte,sur,este,oeste) y pTotaldoors es la cantidad
-            //de puertas que el usuario inserta.
                 for(cantidad && pTotaldoors;cantidad>0 && pTotaldoors>0; cantidad--) {
-                    
                     pTotaldoors--;
                     Door *newDoor = new Door();
                     newDoor->setId(numberDoor);
@@ -54,7 +51,6 @@ class doorManager{
                 cout<<"las iteraciones son:"<<iteraciones<<endl;
                 cout<<"el size es"<<colaControl->getSize()<<endl;  
             }
-
         }
 
 
