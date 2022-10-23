@@ -8,8 +8,8 @@ int main(){
     doorManager *constructor = new doorManager();
     constructor->generateDoor(8);
     Nodo<Door> *entrada = constructor->getEntrada(); 
-    //Miner *miner = new Miner(20 ,"pepe", 10 , entrada , 8 );
-    //miner->buildPath();
+    Miner *miner = new Miner(20 ,"pepe", 10 , entrada , 8 );
+    miner->buildPath();
     //entrada = entrada->getNodo(2);
     //entrada=entrada->getNodo(1);
     //cout<<"coloque la puerta en una variable tipo puerta"<<endl;

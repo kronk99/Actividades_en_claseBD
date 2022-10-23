@@ -30,6 +30,7 @@ class doorManager{
             while (colaControl->getSize()!=0 && pTotaldoors>0) {
                 //EL PRIMER NODO DE ENTRADA PRINCIPAL NO TIENE PUERTAS
                 //ARREGLAR ESTO
+                //EL ERROR DEBE DE SER ACA.
                 Nodes<Nodo<Door>> *queueNode = colaControl->dequeue(); 
                 
                 Nodo<Door> *currentDoor = queueNode->getData(); //inserte el puntero de nodo metido

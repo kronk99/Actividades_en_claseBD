@@ -115,7 +115,7 @@ class Arbol{
         void setRaiz(T *pRaiz){
             this->Raiz = pRaiz;
         }
-        T *getRaiz(){
+        Nodes<T> *getRaiz(){
             return this->Raiz;
         }
 };

@@ -17,7 +17,7 @@ class Cola  {
         Cola() {
             first = NULL;
             last = NULL;
-            Door *emptyDoor = new Door;
+            Door *emptyDoor = new Door();//se arregla esto 
             Nodo<Door> *empty = new Nodo<Door>();
             emptyDoor->setEmpty();
             Empty = new Nodes<T>(empty); //el empty no sirve arreglar esto
@@ -53,7 +53,7 @@ class Cola  {
             }
             else{
                 cout<<"la lista esta vacia"<<endl;
-                return Empty; //este return null me daña el programa
+                return NULL; //este return null me daña el programa
                 //entonces retorna un nodo llamado Empty que tiene un objeto puerta
                 //que indica "vacio" , ese vacio es condicion a la hora de verificar 
                 //la cola de datos.

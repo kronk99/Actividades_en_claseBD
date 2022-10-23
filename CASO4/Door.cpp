@@ -19,7 +19,7 @@ class Door{
                 tuneles = new Arbol<Camara>();
                 generateTunels();
                 hayTunel = true;
-            }
+            }//TAL VEZ HACE FALTA PONER UN ELSE.
         }
         void generateTunels() {
             int deep = 0;
@@ -45,14 +45,20 @@ class Door{
         void setMaindoor(){
             this->isMainDoor = true;
         }
+        void setTunel(){
+            this->hayTunel = true;
+        }
         void setEmpty(){
-            empty = true;
+            this->empty = true;
         }
         void setId(int number){
             this->id = number;
         }
-        bool getEmpty(){
-            return this->empty;
+        bool getTunel(){
+            return this->hayTunel;
+        }
+        Arbol<Camara>* getArbol(){
+            return this->tuneles;
         }
 };
 #endif
