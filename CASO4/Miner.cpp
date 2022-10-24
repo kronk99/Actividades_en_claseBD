@@ -122,7 +122,7 @@ class Miner{
                 desicion = rand()%2+1; //esto deberia de arreglar la seleccion del nodo
                 //por la que se mete, por que rand 2 devuelve de 0 a 1.
                 cout<<"la desicion es:"<<desicion <<endl; //se modifico esto 
-                while(cantRecorrida <cantBajar){
+                while(cantRecorrida <cantBajar &&bandera->getFlag()==true){
                     if(camActual->getNext()!= NULL && desicion ==2){//el error esta en el getnext
                         cantCamina =camActual->getNext()->getData()->getDistancia(); 
                         while(cantCamina >0){
@@ -148,17 +148,18 @@ class Miner{
                     else{
                         this_thread::sleep_for (std::chrono::seconds(1));
                         cantRecorrida+=velocidad;
-                        cout<<"hic hic , hora de bailar y que el jefe no me descubra"<<endl;
+                        cout<<"hic hic , hora de tomar guaro y que el jefe no me descubra"<<endl;
                     }
                 }
                 checknTakeMinerals();
                 //aca se debe de devolver al inicio
-                while(cantBajar >0){
+                cout<<"yo "<<nombre<<" estoy subiendo"<<endl;
+                while(cantBajar >0 && bandera->getFlag()==true){
                     cantBajar-=velocidad;
-                    cout<<"estoy subiendo"<<endl;
+                    
                     this_thread::sleep_for (std::chrono::seconds(1));
                 }
-                cout<<"extraje esta cantidad de minerales:"<<cantMinTomada<<endl;
+                cout<<"yo "<<nombre<<" extraje esta cantidad de minerales:"<<cantMinTomada<<endl;
                 bodega->enqueue(cantMinTomada);//ESTO ES NUEVO
                 cantMinTomada = 0;
                 cantRecorrida = 0; //esto se modifico*********
@@ -169,7 +170,6 @@ class Miner{
                     //checke si el nodo tiene minerales
                     //si tiene minerales , extraiga
                     //si no tiene minerales, entonces haga delete
-                   
         }
         void checknTakeMinerals(){
             int cantTotake = rand()%cantidadMax+1;

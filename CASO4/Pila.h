@@ -5,13 +5,11 @@
 
 #define PILA 1
 
-// 2. ajustar a que esta lista sea doblemente enlazada, cambia el add, find, insert y el remove
 template <typename T> 
 class Pila  {
     private:
         Nodes<T> *first;
         Nodes<T> *Empty;
-        //ocupo Un nodo al last, para el binary search.
         int size;
     public:
         Pila() {
