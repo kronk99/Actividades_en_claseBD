@@ -15,7 +15,12 @@ Colaint<int> *bodega = new Colaint<int>();
 Flag *flag = new Flag();
 void moveminer(){
     Nodo<Door> *entrada = constructor->getEntrada();
-    Miner *minero = new Miner(20 ,"pepe", 10 , entrada , 8 , bodega , flag );
+    Miner *minero = new Miner(20 ,"explorador", 8, entrada , 8 , bodega , flag );
+    minero->buildPath();
+}
+void moveminer2(){
+    Nodo<Door> *entrada = constructor->getEntrada();
+    Miner *minero = new Miner(10 ,"carguero", 40 , entrada , 8 , bodega , flag );
     minero->buildPath();
 }
 void Jefe(){//hilo del "lector (el consumidor"
@@ -54,11 +59,13 @@ int main(){
     //Miner *minero = new Miner(20 ,"pepe", 10 , entrada , 8 );
     //minero->buildPath();
     thread t1(moveminer);
-    thread t2(Jefe);
-    thread t3(reloj);
+    thread t2(moveminer2);
+    thread t3(Jefe);
+    thread t4(reloj);
     t1.join();
     t2.join();
     t3.join();
+    t4.join();
     //entrada = entrada->getNodo(2);
     //entrada=entrada->getNodo(1);
     //cout<<"coloque la puerta en una variable tipo puerta"<<endl;
