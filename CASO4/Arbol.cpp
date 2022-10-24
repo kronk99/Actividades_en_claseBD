@@ -37,7 +37,7 @@ class Arbol{
             return nodo;
         }//hasta aca esta bien el codigo
         void insertarMineral(T *pCamara){ 
-            insertarNodo(this->arbol, pCamara);
+            insertarNodo(this->arbol, pCamara ,0);
         }//acap paso el arbol y el mineral
 
         void mostarArbol(){
@@ -49,10 +49,21 @@ class Arbol{
         /*EL MINERO DEBE TENER UN CONTADOR TIPO INT DE CUANTO BAJA, CUANDO
         EL MINERO sube se le va restando a ese contador lo que el minero se mueve*/
         //QUITE EL &DE pArbol
-        void insertarNodo(Nodes<T>  *pArbol, T *pCamara){
+        void insertarNodo(Nodes<T>  *pArbol, T *pCamara , int path){
             if(pArbol==NULL){//arbol vacio
                 if(this->Raiz != NULL){
                     Nodes<T>  *nuevo_nodo = crearNode(pCamara); //aca crea el nodo
+                    switch (path){
+                    case 1:
+                        this->arbol->setPrevius(nuevo_nodo);
+                        break;
+                    case 2:
+                        this->arbol->setNext(nuevo_nodo);
+                        break;
+                    
+                    default:
+                        break;
+                    }
                     this->arbol = nuevo_nodo;//Nodo raiz 
                 }
                 else{
@@ -67,11 +78,12 @@ class Arbol{
                     //cout << "El valor raiz es: "<< valorRaiz << " < " << n << endl;
                     if( pCamara->getPotencialMinado() < valorRaiz->getPotencialMinado()){//va al lado izquierdo pues es menor a la raiz
                         //cout <<"Se inserto por la izquierda: "<< pCamara->getPotencialMinado() << endl;
-                        insertarNodo(pArbol->getPrevius(),pCamara);//reemplazar esto sin recursividad
+                        
+                        insertarNodo(pArbol->getPrevius(),pCamara,1);//reemplazar esto sin recursividad
                     }
                     else{//Elemento es mayor a la raiz, se inserta en el lado derecho
                         //cout <<"Se inserto por la derecha: " << pCamara->getPotencialMinado()<< endl;
-                        insertarNodo(pArbol->getNext(),pCamara);//reemplazar esto sin recursividad
+                        insertarNodo(pArbol->getNext(),pCamara,2);//reemplazar esto sin recursividad
                     }
                 }
                 else
@@ -119,5 +131,15 @@ class Arbol{
             return this->Raiz;
         }
 };
+/*int main(){
+    Arbol<Camara> *arbolito = new Arbol<Camara>(); 
+    for(int i = 0 ; i<8 ;i++){ 
+        Camara *newCamara = new Camara(rand()%20); 
+        arbolito->insertarMineral(newCamara); 
+    } 
+    Nodes<Camara> *current = arbolito->getRaiz();
+    cout<<"el nodo siguiente derecha es:"<<current->getNext()->getData()->getCantMineral()<<endl;
+    cout<<"el nodo siguiente izquierda es:"<<current->getPrevius()->getData()->getCantMineral()<<endl;
+}*/
 
 #endif 
