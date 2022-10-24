@@ -34,10 +34,10 @@ void Jefe(){//hilo del "lector (el consumidor"
 void reloj(){
     int segundos = 0;
     int minutos = 0;
-    while(segundos != 10){
-        /*if(segundos%10 == 0){
+    while(minutos != 2){
+        if(segundos%10 == 0){
             cout << "0" << minutos << ":" << segundos << endl;
-        }*/
+        }
         this_thread::sleep_for (std::chrono::seconds(1));
         segundos++;
         if(segundos == 60){
