@@ -12,6 +12,9 @@
 #include <thread>
 #include <chrono>
 #include <stdlib.h>
+#include "Colaint.cpp"
+#include "Nodesint.cpp"
+#include "flag.cpp"
 #ifndef MINER
 #define MINER 1
 using namespace std; //AÑADIDO NUEVO**
@@ -30,11 +33,11 @@ class Miner{
         int cantRecorrida;
         int cantMinTomada;
         //InsertionSort<Nodo<Door>> *toOrder;
-        
-
+        Colaint<int> *bodega;
+        Flag *bandera;
     public:
     //constructor de la clase mineros
-        Miner(int pVelocidad , string name , int maxminerales , Nodo<Door> *entrada , int ptotalDoors){
+        Miner(int pVelocidad , string name , int maxminerales , Nodo<Door> *entrada , int ptotalDoors, Colaint<int> *colada , Flag *bande){
             velocidad = pVelocidad;
             nombre = name;
             cantidadMax = maxminerales;
@@ -43,6 +46,8 @@ class Miner{
             totalDoors = ptotalDoors;
             cantRecorrida = 0;
             //toOrder = new InsertionSort<Nodo<Door>>();
+            this->bodega = colada;//ESTO ES NUEVO
+            bandera = bande;
         }
         void cantminer(int pMinerales){
             cantidadMax = pMinerales;
@@ -60,7 +65,7 @@ class Miner{
         }//funcion encargada del movimiento de los mineros.
         void buildPath(){
             //mapa->Push(current); //esto no esta sirviendo, hasta aca ejecuta el programa.
-            while(totalDoors !=0){ //while flag = true .
+            while(bandera->getFlag()==true){ //while flag = true .
                 int ProbtoReturn = rand()%100;
                 int number = rand()%4-1;
                 //cout<<"se saco un random, el cual es: "<<number<<endl;
@@ -108,7 +113,7 @@ class Miner{
             int cantBajar;
             int desicion;
             int cantCamina;
-            while(i <=3){ //este while puede terminar de varias maneras
+            while(i <=3 &&bandera->getFlag()==true){ //este while puede terminar de varias maneras
             //el mae se puede salir cuando el tamaño del arbol sea la mitad de su original
             //el mae se puede salir cuando hayan pasado x cantidad de iteraciones
             //el mae se puede salir cuando un nodo izquierdo o derecho de la raiz sea nulo.
@@ -154,6 +159,7 @@ class Miner{
                     this_thread::sleep_for (std::chrono::seconds(1));
                 }
                 cout<<"extraje esta cantidad de minerales:"<<cantMinTomada<<endl;
+                bodega->enqueue(cantMinTomada);//ESTO ES NUEVO
                 cantMinTomada = 0;
                 cantRecorrida = 0; //esto se modifico*********
                 i+=1;

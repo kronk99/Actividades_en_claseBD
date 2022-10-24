@@ -8,11 +8,44 @@
 #include <thread>
 #include <chrono>
 #include <stdlib.h>
+#include "Colaint.cpp"
+#include "flag.cpp"
 doorManager *constructor = new doorManager();
+Colaint<int> *bodega = new Colaint<int>();
+Flag *flag = new Flag();
 void moveminer(){
     Nodo<Door> *entrada = constructor->getEntrada();
-    Miner *minero = new Miner(20 ,"pepe", 10 , entrada , 8 );
+    Miner *minero = new Miner(20 ,"pepe", 10 , entrada , 8 , bodega , flag );
     minero->buildPath();
+}
+void Jefe(){//hilo del "lector (el consumidor"
+    int i=0;
+    int cuentasJefe;
+    int cantExtraida;
+    while(flag->getFlag()==true){
+        this_thread::sleep_for (chrono::seconds(10));
+        cantExtraida = bodega->dequeue();
+        cuentasJefe+=cantExtraida;
+        cout<<" el jefe revisa la lista y se extrajo"<<cantExtraida<<endl;
+        i++;
+    }
+    cout<<"se extrajo en total:"<<cuentasJefe<<endl;
+}
+void reloj(){
+    int segundos = 0;
+    int minutos = 0;
+    while(segundos != 10){
+        /*if(segundos%10 == 0){
+            cout << "0" << minutos << ":" << segundos << endl;
+        }*/
+        this_thread::sleep_for (std::chrono::seconds(1));
+        segundos++;
+        if(segundos == 60){
+            minutos++;
+            segundos = 0;
+        }
+    }
+    flag->setFlagFalse();
 }
 int main(){
     //doorManager *constructor = new doorManager();
@@ -21,7 +54,11 @@ int main(){
     //Miner *minero = new Miner(20 ,"pepe", 10 , entrada , 8 );
     //minero->buildPath();
     thread t1(moveminer);
+    thread t2(Jefe);
+    thread t3(reloj);
     t1.join();
+    t2.join();
+    t3.join();
     //entrada = entrada->getNodo(2);
     //entrada=entrada->getNodo(1);
     //cout<<"coloque la puerta en una variable tipo puerta"<<endl;
