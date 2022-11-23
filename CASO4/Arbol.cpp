@@ -36,7 +36,7 @@ class Arbol{
             nodo->setPrevius(izquierda);
             return nodo;
         }//hasta aca esta bien el codigo
-        void insertarMineral(T *pCamara){ 
+        void insertarMineral(T *pCamara){ // crear tuneles
             insertarNodo(this->arbol, pCamara ,0);
         }//acap paso el arbol y el mineral
 

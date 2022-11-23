@@ -54,7 +54,7 @@ void reloj(){
 }
 int main(){
     //doorManager *constructor = new doorManager();
-    constructor->generateDoor(8);
+    constructor->generateDoor(34);
     //Nodo<Door> *entrada = constructor->getEntrada(); 
     //Miner *minero = new Miner(20 ,"pepe", 10 , entrada , 8 );
     //minero->buildPath();

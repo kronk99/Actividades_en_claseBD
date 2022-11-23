@@ -6,7 +6,6 @@
 #define NODO 1
 
 using namespace std;
-
 // 1. pasar este nodo a doblemente enlazado
 template <class T>
 class Nodo {
