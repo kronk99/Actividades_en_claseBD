@@ -24,10 +24,20 @@ class bTree{
                 //a insertar no esta
             }
         }
-        T findnode(T data , bNode* current_root ,int tGrado){
+        void findnode(T data , bNode* current_root ,int tGrado){
             if (current_root->getleaf()==true){ //si es una hoja
             //aca debo hacer un ciclo while para ver si el array esta vacio.
-                int counter = 0;
+                int i = tGrado-1;
+                while(!current_root->getkey(i)){ //por lo que entiendo esto es como decir
+                //mientras que current root get key SEA NULO, y si no es eso cambiarlo a un
+                //equivalente tipo while current_root->getkey == NULL , esto es basicamente
+                //que mientras las llaves sean nulas , restele al maximo
+                i--
+                }//este get key de aca abajo debe de decir getkey->getData() 
+                //para agarrar la palabra, puesto que lo que retorna un 
+                while (current_root->getkey(i)>)
+                //int counter = 0;
+                /*
                 while(counter != cantInsert){
                     counter++
                 }
@@ -41,6 +51,7 @@ class bTree{
                     //si no haga el split
                     //llame a splitnode.
                 }
+                */
             }
         }
 

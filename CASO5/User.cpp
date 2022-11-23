@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string>
+#include <cstring>
+/*
 class User{
     private: 
         string texto;
@@ -10,4 +12,5 @@ class User{
         string getext(){
             return this->texto;
         }
-};
+        
+};*/

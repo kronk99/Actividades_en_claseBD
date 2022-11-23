@@ -7,7 +7,7 @@ using namespace std;
 class hashtable{
     private:
         static const int hashgroups = 10; //esto modificarlo despues a una plantilla de constante
-        list<Users<int, string /*, T* valor*/>> table[hashgroups]; //verificar esto despues, esto 
+        list<pair<int, string /*, T* valor*/>> table[hashgroups]; //verificar esto despues, esto 
         //es la hashtable , el T es para probar si le puedo meter el pointer al usuario
         //que imagino que voy a requerir agarrar el nombre, el string aca es para la palabra.
         //puesto que es una lista de usuarios no users , va a almacenar usuarios.
@@ -30,7 +30,7 @@ class hashtable{
             void insertItem(int key , string value /*, T* valor*/){ //el key cambiarlo luego 
                 int hashvalue = hashfunction(key);
                 auto& cell = table[hashvalue]; //aca le metemos en el indice de la tabla
-                auto& iterador = begin(cell); //iterador al inicio de la lista
+                auto iterador = begin(cell); //iterador al inicio de la lista
                 bool keyexist=false; //necesitamos validar si la llave dentro del hashtable
                 //no esta vacia. ,se da el beneficio de la duda de que este vacia.
                 for(;iterador !=end(cell);iterador++){
@@ -49,7 +49,7 @@ class hashtable{
             void removeItem(int key){
                 int hashvalue = hashfunction(key);
                 auto& cell = table[hashvalue]; //aca le metemos en el indice de la tabla
-                auto& iterador = begin(cell); //iterador al inicio de la lista
+                auto iterador = begin(cell); //iterador al inicio de la lista
                 bool keyexist=false; //necesitamos validar si la llave dentro del hashtable
                 //no esta vacia. ,se da el beneficio de la duda de que este vacia.
                 for(;iterador != end(cell);iterador++){
@@ -69,7 +69,7 @@ class hashtable{
 
             }
             string searchItem(int key){
-
+                return "no function";
             }
             void printTable(){
                 for(int i=0;i<hashgroups;i++){
@@ -79,7 +79,7 @@ class hashtable{
                     }
                     auto iterador = table[i].begin();
                     for (; iterador !=table[i].end(); iterador++){
-                        cout<< "INFOR, LA LLAVE ES: "<<iterador->first<<"con el valor"<<iterador->second<<endl; 
+                        cout<< "INFOR, LA LLAVE ES: Hash:"<<i<<"iterador:"<<iterador->first<<"con el valor"<<iterador->second<<endl; 
                     }//esto de iterador first y iterador second creo que llama a los atribudos declarados
                     //al declarar la lista
                 }
@@ -91,6 +91,15 @@ class hashtable{
 };
 int main(){
     hashtable las;
-
+    las.insertItem(234 , "hola");
+    las.insertItem(209 , "vendo");
+    las.insertItem(2120 , "empanadas");
+    las.insertItem(2341 , "de carne");
+    las.insertItem(1387 , "y frijol");
+    las.insertItem(1597 , "caldo");
+    las.printTable();
+    las.removeItem(234);
+    las.printTable();
+    cout<<"lo que pasa al dividir numero modulo 20"<<5013%10<<endl;
     return 0;
 }

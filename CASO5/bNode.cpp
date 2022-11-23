@@ -24,4 +24,7 @@ class bNode{
       void setkey(T data , int i){ //vea que aca estoy añadiendo el datatype no el pointer
         this->key[i] = data;
       }
+      T getkey(int number){
+        return key[number];
+      }
 };
