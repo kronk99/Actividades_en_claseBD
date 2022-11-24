@@ -260,9 +260,7 @@ class Contenful {
 
 
 int main(void)
-{
-    Contenful regs;
-
+{   Contenful regs;
     regs.registerUser("elvendeTacos29", "venta de tacos al estilo mexicano tradicional ", "Verduras frescas de la más alta calidad y carne de res o cerdo", "t4c0s23", 02, 11, 2022);
     vector<Registered*> allrecords = regs.getRecords();
     cout << allrecords.at(0)->getNickname() << endl;

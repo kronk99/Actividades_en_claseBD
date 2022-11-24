@@ -102,4 +102,9 @@ int main(){
     las.printTable();
     cout<<"lo que pasa al dividir numero modulo 20"<<5013%10<<endl;
     return 0;
+    //ahora lo que ocupo hacer es una funcion que vaya insertando en el arbol, esto puede
+    //ser un ciclo for , del 0 al 9 , entonces en 0 vaya al hash, recorra la lista, get
+    //first , get second -> insertbree
+    //tambien necesito una forma de insertar en el btree todas las palabras, por lo tanto
+    /*primero debo de insertar todas las palabras de las digamos 5 personas */
 }
