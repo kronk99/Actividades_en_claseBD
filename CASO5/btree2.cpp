@@ -51,7 +51,7 @@ class btree{
     void insert(T* User){//cambiar esto a un User
         if(root==NULL){
             root=new Node<T>(t); //inserte un nuevo nodo de grado m-1
-            root->setleaf();
+            root->setleaf2(true);
             root->setkey(0 , User);
             root->setN(1);
         }
@@ -61,8 +61,8 @@ class btree{
             }
     }
 
-    void printLevel(int level,ofstream &fout){
-        root->printLevel(root,level,fout);
+    void printLevel(int level){
+        root->printLevel(root,level);
     }
 
     int height(){
@@ -77,11 +77,12 @@ User* user1 = new User("hola" , 5);
 User* user2 = new User("hola" , 2);
 User* user3 = new User("hola" , 3);
 User* user4 = new User("hola" , 7);
-User* user5 = new User("hola" , 8);
+User* user5 = new User("hola" , 9);
 btree<User>* tree = new btree<User>(4);
 tree->insert(user1);
 tree->insert(user2);
 tree->insert(user3);
 tree->insert(user4);
 tree->insert(user5);
+//tree->printLevel(1);
 }

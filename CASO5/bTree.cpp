@@ -12,7 +12,7 @@ class bTree{
             tGrado = grado;
             cantInserT = 0;
         }
-        void insert(T data){
+        void insert(T* data){
             if (root = NULL){ //si la raiz esta nula 
                 root = new bNode(tGrado);
                 root->setleaf(true);

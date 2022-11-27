@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <cstring>
+#ifndef USER 
+#define USER 1
 using namespace std;
 class User{
     private: 
@@ -21,3 +23,4 @@ class User{
             this->numero = number;
         }
 };
+#endif
